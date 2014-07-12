@@ -238,6 +238,7 @@ func Traceroute(dest string, options *TracerouteOptions, c ...chan TracerouteHop
 				notify(TracerouteHop{Success: false, TTL: ttl}, c)
 				ttl += 1
 				retry = 0
+				return TracerouteResult{}, fmt.Errorf("Error receiving from %d :" + err.Error(), destAddr)
 			}
 		}
 
